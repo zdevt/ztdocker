@@ -5,11 +5,27 @@ RUN apt update
 RUN apt install -y apt-utils
 RUN apt install -y dialog
 RUN apt upgrade -y
-RUN apt install -y sudo net-tools iputils-ping htop
-RUN apt install -y ssh vim gcc g++ libevent-dev sqlite3 libsqlite3-dev
-RUN apt install -y subversion git
-RUN apt install -y make cmake autoconf python build-essential
-RUN apt install -y python-dev python3-dev
+RUN apt update && apt install -y \
+                  sudo \
+                  net-tools \
+                  iputils-ping \
+                  htop \
+                  ssh \
+                  vim \
+                  gcc \
+                  g++ \
+                  libevent-dev \
+                  sqlite3 \
+                  libsqlite3-dev \
+                  subversion \
+                  git \
+                  make \
+                  cmake \
+                  autoconf \
+                  python \
+                  build-essential \
+                  python-dev \
+                  python3-dev
 #RUN apt install -y gawk libncurses-dev libssl-dev 
 #RUN apt install -y libc6:i386 libncurses5:i386 libstdc++6:i386
 RUN apt autoclean
