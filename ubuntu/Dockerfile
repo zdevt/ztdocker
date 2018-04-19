@@ -1,15 +1,12 @@
 FROM ubuntu
 MAINTAINER nil (null)
+ENV DEBIAN_FRONTEND noninteractive
 RUN apt update
-RUN apt upgrade -y
 RUN apt install -y apt-utils
-RUN apt install -y sudo
-RUN apt install -y net-tools
-RUN apt install -y iputils-ping
-RUN apt install -y openssh-server
-RUN apt install -y vim
-RUN apt install -y gcc 
-RUN apt install -y g++
+RUN apt install -y dialog
+RUN apt upgrade -y
+RUN apt install -y sudo net-tools iputils-ping htop
+RUN apt install -y ssh vim gcc g++ libevent-dev sqlite3 libsqlite3-dev
 #RUN mkdir -p /var/run/sshd
 #RUN mkdir -p /root/.ssh
 #RUN sed -ri  's/session required pam_loginuid.so/#session required pam_loginuid.so/g' /etc/pam.d/sshd
