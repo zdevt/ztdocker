@@ -7,6 +7,9 @@ RUN apt install -y sudo
 RUN apt install -y net-tools
 RUN apt install -y iputils-ping
 RUN apt install -y openssh-server
+RUN apt install -y vim
+RUN apt install -y gcc 
+RUN apt install -y g++
 #RUN mkdir -p /var/run/sshd
 #RUN mkdir -p /root/.ssh
 #RUN sed -ri  's/session required pam_loginuid.so/#session required pam_loginuid.so/g' /etc/pam.d/sshd
