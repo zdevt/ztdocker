@@ -7,7 +7,8 @@ RUN apt install -y dialog
 RUN apt upgrade -y
 RUN apt install -y sudo net-tools iputils-ping htop
 RUN apt install -y ssh vim gcc g++ libevent-dev sqlite3 libsqlite3-dev
-RUN apt install -y subversion git make cmake autoconf
+RUN apt install -y subversion git make cmake autoconf python build-essential
+RUN apt install -y python-dev python3-dev
 RUN apt autoclean
 RUN apt autoremove
 #RUN mkdir -p /var/run/sshd
