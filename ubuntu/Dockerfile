@@ -25,7 +25,8 @@ RUN apt update && apt install -y \
                   python \
                   build-essential \
                   python-dev \
-                  python3-dev
+                  python3-dev \
+                  sysv-rc-conf
 #RUN apt install -y gawk libncurses-dev libssl-dev 
 #RUN apt install -y libc6:i386 libncurses5:i386 libstdc++6:i386
 RUN apt autoclean
@@ -41,4 +42,4 @@ RUN apt autoremove
 #RUN chmod 755 /run.sh
 EXPOSE 22
 #每个容器只能执行一条cmd命令，多条只有最后一条执行
-CMD ["service ssh start"]
+#CMD ["service ssh start"]
