@@ -10,7 +10,7 @@ RUN apt install -y sudo net-tools iputils-ping htop vim libevent-dev \
                   sqlite3 libsqlite3-dev subversion git gawk python \
                   python-dev python3-dev build-essential gcc unzip wget \
                   g++ make cmake autoconf sysv-rc-conf libncurses-dev libssl-dev \
-                  bsdtar libc6:i386 libncurses5:i386 libstdc++6:i386
+                  bsdtar u-boot-tools libc6:i386 libncurses5:i386 libstdc++6:i386
 RUN apt-get autoclean
 RUN apt-get autoremove
 #RUN mkdir -p /var/run/sshd
