@@ -1,7 +1,7 @@
 #!/bin/sh
 
 docker run --detach --hostname zt \
-  --publish 443:443 --publish 80:80 --publish 8888:22 \
+  --publish 443:443 --publish 80:80 --publish 28888:22 \
   --name gitlab \
   --volume /Users/devz/src_git/ztdocker/gitlab/config:/etc/gitlab \
   --volume /Users/devz/src_git/ztdocker/gitlab/logs:/var/log/gitlab \
