@@ -1,14 +1,15 @@
 #!/bin/sh
 docker run -it \
   --name tensorflow \
+  --restart always \
   -d \
-  --rm \
-  -v /Users/devz/src_git/ztdocker/tensorflow/notebooks:/notebooks \
-  -v /Users/devz/src_git/ztdocker/tensorflow/logs:/logs \
+  -v /home/zt/docker:/notebooks \
+  -v /home/zt/docker:/logs \
   -p  6006:6006 \
   -p  8888:8888 \
   -p  20022:22 \
   -e "PASSWORD=aaaaaa" \
-  tensorflow/tensorflow
+  dafeilang2018/tensorflow
 
 docker exec -d tensorflow bash -c "tensorboard --logdir /logs"
+docker exec -d tensorflow bash -c "service ssh start"
