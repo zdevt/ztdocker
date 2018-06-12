@@ -4,6 +4,7 @@ docker run -d \
   -p 20022:22 \
   -v /Users/devz/Downloads:/mnt/temp \
   --name ros \
-  ros
+  dafeilang2018/ros
 
-docker exec -d ros bash -c "roscore"
+docker exec -d ros bash -c "service ssh start"
+#docker exec -d ros bash -c "roscore"
