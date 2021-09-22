@@ -1,8 +1,9 @@
 #!/bin/sh
-docker run --detach \
-  -it \
+# docker build -t xxx:xxx .
+# d:/test   -v /d/test:/mnt/temp
+docker run -d -it -h ubuntu \
   -v /Users/devz/Downloads:/mnt/temp \
-  --name ubuntu \
-  dafeilang2018/ubuntu
-
-docker exec -d ubuntu bash -c "service ssh start"
+  -p 10022:22 -p 10023:23 \
+  --name udev \
+  --restart=always \
+  ubuntu:dev
