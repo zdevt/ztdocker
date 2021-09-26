@@ -5,6 +5,8 @@ RUN apt update
 RUN apt install -y apt-utils
 RUN apt update
 RUN apt upgrade -y
+RUN apt install -y man-db
+RUN bash -c 'yes | unminimize'
 RUN apt install -y dialog
 RUN apt install -y sudo net-tools iputils-ping htop ssh
 RUN apt install -y vim gcc g++ libevent-dev sqlite3
@@ -18,13 +20,24 @@ RUN apt install -y gcc-arm-linux-gnueabihf
 RUN apt install -y g++-arm-linux-gnueabihf
 RUN apt install -y gdb-multiarch
 RUN apt install -y gcc-arm-none-eabi
-RUN apt install -y xinetd telnetd 
-RUN apt install -y telnet
-#RUN apt install -y libc6:i386 libncurses5:i386 libstdc++6:i386
-RUN apt autoclean
-RUN apt autoremove
+RUN apt install -y xinetd telnetd astyle
+RUN apt install -y telnet dos2unix cscope ctags
+RUN apt install -y language-pack-zh-hans
+RUN apt install -y fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei 
+RUN apt install -y fonts-arphic-ukai fonts-arphic-uming
+RUN apt install -y llvm clang
+ADD environment /etc/
+ADD local /var/lib/locales/supported.d/
+RUN bash -c 'locale-gen'
+ADD telnet /etc/xinetd.d/
+ADD sshd_config /etc/ssh/
+ADD ssh.sh /root/
+ADD vimrc /root/.vimrc
+ADD bashrc /root/.bashrc
+ADD vim.tlz /root/
 EXPOSE 22
 EXPOSE 23
-#每个容器只能执行一条cmd命令，多条只有最后一条执行
-#CMD ["service ssh start"]
+RUN apt autoclean
+RUN apt autoremove
 #docker build -t ubuntu:dev .
+#passwd  dev

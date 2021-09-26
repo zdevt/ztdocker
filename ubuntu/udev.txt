@@ -1,0 +1,12 @@
+telnet:  
+sudo /etc/init.d/xinetd   restart
+telnet localhost
+user: root
+pass: dev
+
+ssh:
+/etc/init.d/ssh restart 
+
+
+docker run -d -h name myimage:1.0 
+docker run --restart=always/Users/devz/Library/Mobile Documents/com~apple~CloudDocs/DEV/docker/run.sh

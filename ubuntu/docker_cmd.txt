@@ -1,0 +1,79 @@
+# docker
+
+标签（空格分隔）： docker gitlab
+
+---
+
+#docker 释放空间
+    docker system prune -a
+
+#删除步骤
+查看镜像 docker images
+删除相应id docker rmi -f imageid(or name) 
+删除所有容器 docker rm $(docker ps -a -q )
+#删除无效卷
+docker volume rm $(docker volume ls -qf dangling=true)
+
+#启动镜像并创建容器如：(待启动容器命名为xxx,并挂在主机/home/test 到容器/temp 映射主机端口到容器端口)
+>docker run -it -v /home/test/:/temp -p hostport:containerport --name xxx image 
+    -i 交互模式
+    -d 后台运行
+    -t 容器启动后进入命令行
+    -v 表示将挂载  主机目录:容器目录
+    -p 指定对外端口  如 -p  主机端口:容器端口
+    --rm 退出时删除容器
+
+#连接到后台的镜像
+先使用 docker ps -a 查看容器id
+然后 docker attach id
+
+#保存/加载tar镜像
+>docker save -o xxx.tar  image_id(or name)
+>docker load -i xxx.tar
+
+#docker 容器改名
+>docker rename oldname newname
+
+#docker 镜像命名
+>docker tag imgid  name:tag
+
+#docker安装ubuntu注意事项
+创建用户 使用 adduer 
+提升到管理员修改 /etc/sudoer
+
+#docker 和主机拷贝文件
+如拷贝文件a到容器机器 xxxxxxx 下的/mnt/temp目录
+>docker cp a xxxxx:/mnt/temp
+
+#docker 容器设备映射
+>docker run -it  --device /dev/ttyUSB0:/dev/ttyS0  imagename /bin/bash
+
+#docker 提交镜像到docker hub
+1. 前提： 有dockerhub的账号，并建立版本库 这里我的版本库是 dafeilang2018/ubuntu
+2. 配置好容器
+3. 查看容器id 这里假设id是 xxxxxxxx
+4. commit 一个容器 docker commit xxxxxxx dafeilang2018/ubuntu
+5. 登录docker  : docker login
+6. docker push dafeilang2018/ubuntu:latest
+
+#docker  中的ubuntu 解压文件遇到 Directory renamed before ........
+原因是docker中ubuntu tar解压符号链接有问题 改为 bsdtar解压即可
+
+
+#docker 安装 gitlab 的启动命令
+docker run --detach --hostname zt \
+  --publish 443:443 --publish 80:80 --publish 8888:22 \
+  --name gitlab \
+  --restart always \
+  --volume /Users/devz/src_svn/proj/docker/gitlab/config:/etc/gitlab \
+  --volume /Users/devz/src_svn/proj/docker/gitlab/logs:/var/log/gitlab \
+  --volume /Users/devz/src_svn/proj/docker/gitlab/data:/var/opt/gitlab \
+  gitlab/gitlab-ce:latest
+    
+    --detach: 设置容器后台运行
+    --hostname: 设置容器的 hostname
+    --publish: 端口转发规则（80：Http 访问端口，443：Https 访问端口，8888：主机的 ssh 访问端口，22：Docker 容器中 ssh 访问端口）
+    --name：容器名称
+    --restart always：每次启动电脑就重启容器
+    --volume: 共享目录挂载   本机目录:容器目录
+    --e：配置 Gitlab 运行的环境变量 
