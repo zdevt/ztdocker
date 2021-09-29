@@ -27,6 +27,7 @@ RUN apt install -y fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei
 RUN apt install -y fonts-arphic-ukai fonts-arphic-uming
 RUN apt install -y llvm clang
 ADD environment /etc/
+ADD profile /etc/
 ADD local /var/lib/locales/supported.d/
 RUN bash -c 'locale-gen'
 ADD telnet /etc/xinetd.d/
