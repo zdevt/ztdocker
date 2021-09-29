@@ -25,7 +25,7 @@ RUN apt install -y telnet dos2unix cscope ctags
 RUN apt install -y language-pack-zh-hans
 RUN apt install -y fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei 
 RUN apt install -y fonts-arphic-ukai fonts-arphic-uming
-RUN apt install -y llvm clang
+RUN apt install -y llvm clang openocd
 ADD environment /etc/
 ADD profile /etc/
 ADD local /var/lib/locales/supported.d/
