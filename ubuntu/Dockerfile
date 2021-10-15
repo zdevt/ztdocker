@@ -25,7 +25,7 @@ RUN apt install -y telnet dos2unix cscope ctags
 RUN apt install -y language-pack-zh-hans
 RUN apt install -y fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei 
 RUN apt install -y fonts-arphic-ukai fonts-arphic-uming
-RUN apt install -y llvm clang openocd
+RUN apt install -y llvm clang openocd clang-format global
 ADD environment /etc/
 ADD profile /etc/
 ADD local /var/lib/locales/supported.d/
@@ -33,6 +33,8 @@ RUN bash -c 'locale-gen'
 ADD telnet /etc/xinetd.d/
 ADD sshd_config /etc/ssh/
 ADD ssh.sh /root/
+ADD timezone /etc/
+ADD localtime /etc/
 ADD vimrc /root/.vimrc
 ADD bashrc /root/.bashrc
 ADD vim.tlz /root/
