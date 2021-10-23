@@ -35,9 +35,10 @@ ADD sshd_config /etc/ssh/
 ADD ssh.sh /root/
 ADD timezone /etc/
 ADD localtime /etc/
-ADD vimrc /root/.vimrc
 ADD bashrc /root/.bashrc
 ADD vim.tlz /root/
+ADD /Users/devz/src_git/ztvim/vimrc /root/.vimrc
+ADD /Users/devz/src_git/ztvim/astyle_sh /root/.vim/
 EXPOSE 22
 EXPOSE 23
 RUN apt autoclean
