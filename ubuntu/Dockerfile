@@ -18,7 +18,7 @@ RUN apt install -y bison flex texinfo hgsubversion whois
 RUN apt install -y libncurses5-dev zlib1g-dev gettext
 RUN apt install -y gcc-arm-linux-gnueabihf
 RUN apt install -y g++-arm-linux-gnueabihf
-RUN apt install -y gdb-multiarch
+RUN apt install -y gdb-multiarch gcc-multilib g++-multilib
 RUN apt install -y gcc-arm-none-eabi
 RUN apt install -y xinetd telnetd astyle
 RUN apt install -y telnet dos2unix cscope ctags
