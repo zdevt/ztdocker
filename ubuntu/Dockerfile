@@ -16,16 +16,16 @@ RUN apt install -y python3-dev u-boot-tools
 RUN apt install -y gawk libncurses-dev libssl-dev 
 RUN apt install -y bison flex texinfo hgsubversion whois
 RUN apt install -y libncurses5-dev zlib1g-dev gettext
-RUN apt install -y gcc-arm-linux-gnueabihf
-RUN apt install -y g++-arm-linux-gnueabihf
-RUN apt install -y gdb-multiarch gcc-multilib g++-multilib
-RUN apt install -y gcc-arm-none-eabi
 RUN apt install -y xinetd telnetd astyle
-RUN apt install -y telnet dos2unix cscope ctags
+RUN apt install -y telnet dos2unix cscope ctags mlocate
 RUN apt install -y language-pack-zh-hans
 RUN apt install -y fonts-droid-fallback ttf-wqy-zenhei ttf-wqy-microhei 
 RUN apt install -y fonts-arphic-ukai fonts-arphic-uming
 RUN apt install -y llvm clang openocd clang-format global
+RUN apt install -y gdb-multiarch gcc-multilib g++-multilib
+RUN apt install -y gcc-arm-linux-gnueabihf
+RUN apt install -y g++-arm-linux-gnueabihf
+RUN apt install -y gcc-arm-none-eabi
 ADD environment /etc/
 ADD profile /etc/
 ADD local /var/lib/locales/supported.d/
