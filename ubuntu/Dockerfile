@@ -26,7 +26,7 @@ RUN apt install -y gdb-multiarch gcc-multilib g++-multilib
 RUN apt install -y gcc-arm-linux-gnueabihf
 RUN apt install -y g++-arm-linux-gnueabihf
 RUN apt install -y gcc-arm-none-eabi
-RUN apt install -y sdcc python3-serial
+RUN apt install -y sdcc python3-serial python3-pip
 ADD environment /etc/
 ADD profile /etc/
 ADD local /var/lib/locales/supported.d/
