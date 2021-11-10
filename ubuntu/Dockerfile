@@ -27,6 +27,7 @@ RUN apt install -y gcc-arm-linux-gnueabihf
 RUN apt install -y g++-arm-linux-gnueabihf
 RUN apt install -y gcc-arm-none-eabi
 RUN apt install -y sdcc python3-serial python3-pip
+RUN apt install -y texlive texlive-science
 ADD environment /etc/
 ADD profile /etc/
 ADD local /var/lib/locales/supported.d/
